@@ -1,0 +1,53 @@
+{
+    "cluster": "", 
+    "taskDefinition": "", 
+    "overrides": {
+        "containerOverrides": [
+            {
+                "name": "", 
+                "command": [
+                    ""
+                ], 
+                "environment": [
+                    {
+                        "name": "", 
+                        "value": ""
+                    }
+                ], 
+                "cpu": 0, 
+                "memory": 0, 
+                "memoryReservation": 0
+            }
+        ], 
+        "taskRoleArn": "", 
+        "executionRoleArn": ""
+    }, 
+    "count": 0, 
+    "startedBy": "", 
+    "group": "", 
+    "placementConstraints": [
+        {
+            "type": "distinctInstance", 
+            "expression": ""
+        }
+    ], 
+    "placementStrategy": [
+        {
+            "type": "binpack", 
+            "field": ""
+        }
+    ], 
+    "launchType": "FARGATE", 
+    "platformVersion": "", 
+    "networkConfiguration": {
+        "awsvpcConfiguration": {
+            "subnets": [
+                ""
+            ], 
+            "securityGroups": [
+                ""
+            ], 
+            "assignPublicIp": "ENABLED"
+        }
+    }
+}

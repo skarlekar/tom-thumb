@@ -1,0 +1,49 @@
+{
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "containerDefinitions": [
+        {
+            "name": "thumbnail-maker-container",
+            "image": "219104658389.dkr.ecr.us-east-1.amazonaws.com/tom-thumb",
+            "essential": true,
+            "portMappings": [],
+            "environment": [
+                {
+                    "name": "AWS_REGION",
+                    "value": "us-east-1"
+                },
+                {
+                    "name": "INPUT_VIDEO_FILE_URL",
+                    "value": "https://s3.amazonaws.com/skarlekar-ffmpeg/raw/samplevideo.mp4"
+                },
+                {
+                    "name": "OUTPUT_S3_PATH",
+                    "value": "skarlekar-ffmpeg/thumbnail"
+                },
+                {
+                    "name": "OUTPUT_THUMBS_FILE_NAME",
+                    "value": "whats-up-bunny.png"
+                },
+                {
+                    "name": "POSITION_TIME_DURATION",
+                    "value": "00:25"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/video-thumbnail-task",
+                    "awslogs-region": "us-east-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
+        }
+    ],
+    "networkMode": "awsvpc",
+    "memory": "1024",
+    "cpu": "256",
+    "executionRoleArn": "arn:aws:iam::219104658389:role/ecsTaskExecutionRole",
+    "family": "video-thumbnail-task",
+    "taskRoleArn": "arn:aws:iam::219104658389:role/skarlekar-ecs-s3-full-access"
+}
