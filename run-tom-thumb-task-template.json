@@ -1,35 +1,36 @@
 {
-    "cluster": "thumb-nail-cluster",
-    "taskDefinition": "video-thumbnail-task:1",
+    "cluster": "tom-thumb-cluster",
+    "taskDefinition": "tom-thumb-task",
     "overrides": {
         "containerOverrides": [
-            { "name": "thumbnail-maker-container",
-                "environment": [
+            { 	
+		"name": "tom-thumb-container",
+		"environment": [
                     {
                         "name": "AWS_REGION",
-                        "value": "us-east-1"
+                        "value": "AWS_REGION"
                     },
                     {
                         "name": "INPUT_VIDEO_FILE_URL",
-                        "value": "https://s3.amazonaws.com/skarlekar-ffmpeg/raw/samplevideo.mp4"
+                        "value": "INPUT_VIDEO_FILE_URL"
                     },
                     {
                         "name": "OUTPUT_S3_PATH",
-                        "value": "skarlekar-ffmpeg/thumbnail"
+                        "value": "OUTPUT_S3_PATH"
                     },
                     {
                         "name": "OUTPUT_THUMBS_FILE_NAME",
-                        "value": "big-bugs-bunny.png"
+                        "value": "OUTPUT_THUMBS_FILE_NAME"
                     },
                     {
                         "name": "POSITION_TIME_DURATION",
-                        "value": "00:12"
+                        "value": "POSITION_TIME_DURATION"
                     }
                 ]
             }
         ],
-        "taskRoleArn": "arn:aws:iam::219104658389:role/skarlekar-ecs-s3-full-access",
-        "executionRoleArn": "arn:aws:iam::219104658389:role/ecsTaskExecutionRole"
+        "taskRoleArn": "MY_TASK_ROLE_ARN",
+        "executionRoleArn": "MY_EXECUTION_ROLE_ARN"
     },
     "count": 1,
     "launchType": "FARGATE",
@@ -37,11 +38,11 @@
     "networkConfiguration": {
         "awsvpcConfiguration": {
             "subnets": [
-                "subnet-095dd4d5cf2031bd3",
-                "subnet-0dfcc0afce1bb56d9"
+                "SUBNET1",
+                "SUBNET2"
             ],
             "securityGroups": [
-                "sg-03fe67d43722133c2"
+                "SECURITYGROUP"
             ],
             "assignPublicIp": "ENABLED"
         }
