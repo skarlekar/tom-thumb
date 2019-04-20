@@ -3,7 +3,8 @@
   "Statement": {
     "Effect": "Allow",
     "Principal": {
-      "Service": "ecs-tasks.amazonaws.com"
+      "Service": "ecs-tasks.amazonaws.com",
+      "Service": "lambda.amazonaws.com"
     },
     "Action": "sts:AssumeRole"
   }

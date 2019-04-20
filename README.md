@@ -47,3 +47,27 @@ source ./create-tom-thumb-repository.sh
 
 # Verify the results
 
+# Use a lambda to trigger the task
+cd lambda
+
+# Identify a bucket that will notify the lambda when a video file is uploaded. Note down its ARN and set the S3_BUCKET_ARN variable.
+EXPORT S3_BUCKET_ARN=arn:aws:s3:::your-bucket-name
+
+# Create the policies and roles required for the lambda to invoke the Fargate task
+source ./create-lambda-role.sh
+
+# Create the log group required for the lambda to post logs to CloudWatch
+./create-task-runner-log-group.sh
+
+# Package the python code that has the function that will be triggered when a video file is uploaded
+./package-lambda.sh
+
+# Create the lambda code from the zipped source code from the above step
+./create-lambda.sh
+
+# S3 setup
+# Create a folder called 'video', 'thumbnail' and 'raw' in the S3 bucket that will be used for this project.
+
+# In the Console go to the Advanced Settings in the Properties tab of the bucket and create a notification event when a file is dropped into a particular folder in your S3 bucket.
+
+# Upload a video file in the 'video' folder of the bucket and verify a thumbnail is created in the 'thumbnail' folder. It will take around a minute for the process to complete depending upon the size of the video file.
